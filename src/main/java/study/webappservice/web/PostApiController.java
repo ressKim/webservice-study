@@ -3,7 +3,7 @@ package study.webappservice.web;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import study.webappservice.service.posts.PostsService;
-import study.webappservice.web.dto.PostUpdateRequestDto;
+import study.webappservice.web.dto.PostsUpdateRequestDto;
 import study.webappservice.web.dto.PostsResponseDto;
 import study.webappservice.web.dto.PostsSaveRequestDto;
 
@@ -20,7 +20,7 @@ public class PostApiController {
     }
 
     @PutMapping("/api/v1/posts/{id}")
-    public Long update(@PathVariable Long id, @RequestBody PostUpdateRequestDto requestDto) {
+    public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto) {
         return postsService.update(id, requestDto);
     }
 
