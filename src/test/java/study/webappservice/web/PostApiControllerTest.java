@@ -1,6 +1,5 @@
 package study.webappservice.web;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,7 +14,7 @@ import study.webappservice.web.dto.PostsSaveRequestDto;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
@@ -31,7 +30,7 @@ class PostApiControllerTest {
     private PostsRepository postsRepository;
 
     @Test
-    public void posts_save_test() throws Exception {
+    public void posts_save_test() {
         String title = "title";
         String content = "content1";
 
