@@ -10,6 +10,7 @@ import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import study.webappservice.config.auth.dto.OAuthAttributes;
+import study.webappservice.config.auth.dto.SessionUser;
 import study.webappservice.web.domain.user.User;
 import study.webappservice.web.domain.user.UserRepository;
 
@@ -40,8 +41,9 @@ public class CustomOauth2UserService implements OAuth2UserService<OAuth2UserRequ
         OAuthAttributes attributes = OAuthAttributes.
                 of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
-
         User user = saveOrUpdate(attributes);
+
+        httpSession.setAttribute("user", new SessionUser(user));
 
         return new DefaultOAuth2User(
                 Collections.singleton(
